@@ -1,0 +1,31 @@
+{
+  "name": "employee-tracker",
+  "version": "1.0.0",
+  "description": "Gt bootcamp hmwk 12 mysql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IamIan777/Big-Brother.git"
+  },
+  "keywords": [
+    "mysql",
+    "inquirer"
+  ],
+  "author": "Ian Heap",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IamIan777/Big-Brother/issues"
+  },
+  "homepage": "https://github.com/IamIan777/Big-Brother#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "console.table": "^0.10.0",
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.2.3",
+    "nodemon": "^2.0.7"
+  }
+}
