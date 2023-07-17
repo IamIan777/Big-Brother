@@ -5,9 +5,8 @@ CREATE DATABASE employee_db;
 USE employee_db;
 
 CREATE TABLE departments (
-    id INTEGER NOT NULL AUTO_INCREMENT,
+    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     dept_name VARCHAR(30),
-    PRIMARY KEY (id)
 );
 
 CREATE TABLE roles (

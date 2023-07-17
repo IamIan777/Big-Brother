@@ -22,10 +22,12 @@
   },
   "homepage": "https://github.com/IamIan777/Big-Brother#readme",
   "dependencies": {
-    "colors": "^1.4.0",
     "console.table": "^0.10.0",
+    "dotenv": "^16.3.1",
+    "fetch": "^1.1.0",
     "inquirer": "^8.2.4",
     "mysql2": "^3.2.3",
+    "node": "^20.4.0",
     "nodemon": "^2.0.7"
   }
 }
