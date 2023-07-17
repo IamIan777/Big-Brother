@@ -12,15 +12,15 @@ const db = mysql.createConnection(
     console.log('Connected to the employees_db database')
     );
 
-function updateEmployee() {
+function updateEmployees() {
     inquirer.prompt(updateQuestions).then((data) => {
-        const sql = `UPDATE employee
+        const sql = `UPDATE employees
         SET role_id = (?) WHERE id = (?)`;
-        const newData = [data.role_id, data.employee_id];
+        const newData = [data.role_id, data.employees_id];
         db.query(sql, newData, (err) => {
             if (err) throw err;
-            console.log('Employee Successfully updated!')
-            db.query(`SELECT * FROM employee`, (err, rows) => {
+            console.log('Employees Successfully updated!')
+            db.query(`SELECT * FROM employees`, (err, rows) => {
                 if (err) throw err;
                 console.table(rows);
                 init()
@@ -32,12 +32,12 @@ function updateEmployee() {
 
 let updateQuestions = [
     {
-        name: "employee_id",
+        name: "employees_id",
         type: "input", 
-        message: "Please enter a numerical value for the employee you want to update's ID",
+        message: "Please enter a numerical value for the employees you want to update's ID",
     },
     {
-        name: "role_id",
+        name: "roles_id",
         type: "input",
         message: "Please enter a numerical value for the employee's new Role ID."
     }
@@ -78,10 +78,10 @@ function init() {
                 addRole();
                 break;
             case 'Add an Employee':
-                addEmployee();
+                addEmployees();
                 break;
             case 'Update an Employee Role':
-                updateEmployee();
+                updateEmployees();
                 break;
             case 'Quit':
                 quit();
@@ -98,11 +98,11 @@ function viewAllEmployees() {
     department.department_name,
     role.salary,
     CONCAT(manager.first_name, ' ', manager.last_name) AS manager
-    FROM employee
-    LEFT JOIN role ON employee.role_id = role.id
+    FROM employees
+    LEFT JOIN role ON employees.role_id = role.id
     LEFT JOIN department ON role.department_id = department.id
-    LEFT JOIN employee AS manager ON employee.manager_id = manager.id
-    ORDER by employee.id`;
+    LEFT JOIN employee AS manager ON employees.manager_id = manager.id
+    ORDER by employees.id`;
     db.query(query, (err, rows) => {
         if (err) throw err;
         console.table(rows);
@@ -111,7 +111,7 @@ function viewAllEmployees() {
 };
 
 function viewAllDepartments() {
-    let query = `SELECT * FROM department`;
+    let query = `SELECT * FROM departments`;
     db.query(query, (err, rows) => {
         if (err) throw err;
         console.table(rows)
@@ -120,7 +120,7 @@ function viewAllDepartments() {
 };
 
 function viewAllRoles() {
-    let query = `SELECT * FROM role`;
+    let query = `SELECT * FROM roles`;
     db.query(query, (err, rows) => {
         if (err) throw err;
         console.table(rows)
@@ -136,7 +136,7 @@ let departmentQuestion = [
     }
 ];function addDepartment() {
     inquirer.prompt(departmentQuestion).then((data) => {
-        const sql = `INSERT INTO department (department_name)
+        const sql = `INSERT INTO departments (department_name)
         VALUES (?)`;
         const newData = [data.department_name];
         db.query(sql, newData, (err) => {
@@ -171,7 +171,7 @@ let roleQuestions = [
 
 function addRole() {
     inquirer.prompt(roleQuestions).then((data) => {
-        const sql = `INSERT INTO role (title, salary, department_id)
+        const sql = `INSERT INTO roles (title, salary, department_id)
         VALUES (?, ?, ?)`;
         const newData = [data.title, data.salary, data.department_id];
         db.query(sql, newData, (err) => {
@@ -211,7 +211,7 @@ let employeeQuestions = [
 
 function addEmployee() {
     inquirer.prompt(employeeQuestions).then((data) => {
-        const sql = `INSERT INTO employee (first_name, last_name, role_id, manager_id)
+        const sql = `INSERT INTO employees (first_name, last_name, role_id, manager_id)
         VALUES (?, ?, ?, ?)`;
         const newData = [
             data.first_name,
@@ -230,3 +230,10 @@ function addEmployee() {
         })
     })
 };
+
+function quit() {
+    console.table;
+    process.exit()
+}
+
+init()
