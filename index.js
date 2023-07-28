@@ -154,6 +154,23 @@ function viewRoles() {
     initialize()
     })
 };
+let roleQuestions = [
+    {
+        name: "title",
+        type: "input",
+        message: "Enter the title of the role you would like to add.",
+    },
+    {
+        name: "salary",
+        type: "input", 
+        message: "Enter a the amount for the role's salary."
+    },
+    {
+        name: "department_id",
+        type: "input",
+        message: "Please enter the Department ID for the role you are adding.",
+    },
+];
 function addRole() {
     inquirer.prompt(roleQuestions).then((data) => {
     const sql = `INSERT INTO roles (title, salary, department_id)

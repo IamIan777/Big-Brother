@@ -11,6 +11,7 @@ This application allows a user to operate a command line to keep track of they'r
 3. npm i
 
 ## Usage
+![Alt text](<images/Screenshot (17).png>)
 
 1. .env needed to connect with MYSQL information
 2. npm start
